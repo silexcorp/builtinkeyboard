@@ -305,7 +305,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
     List<String> letters = [];
     try {
       letters =
-          languageConfig[widget.language]![widget.layout]!['layout']!.split("");
+          languageConfig[widget.language]![widget.layout]!['layout']!.split(" ");
     } catch (_CastError) {
       printError(
           "Uknown language or layout was used, or Incorrect combination of language-layout");

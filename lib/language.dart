@@ -3,6 +3,7 @@ enum Language {
   FR,
   DE,
   AR,
+  KAQ,
 }
 
 enum Layout {
@@ -10,6 +11,7 @@ enum Layout {
   QWERTZ,
   AZERTY,
   ARABIC,
+  QWERTYKAQ,
 }
 
 var languageConfig = {
@@ -17,6 +19,7 @@ var languageConfig = {
   Language.FR: frenchConfig,
   Language.DE: germanConfig,
   Language.AR: arabicConfig,
+  Language.KAQ: kaqConfig,
 };
 
 // Languages Configurations
@@ -73,4 +76,13 @@ var arabicConfig = {
     'topLength': '11',
     'middleLength': '10',
   },
+};
+
+var kaqConfig = {
+  Layout.QWERTYKAQ: <String, String>{
+    'layout': "q w e r t y u i o p ? a s tz ' j k l , x ch b' n m",
+    'horizontalSpacing': '6.0', // space between keys
+    'topLength': '10', // number of keys
+    'middleLength': '9', // number of keys
+  }
 };
