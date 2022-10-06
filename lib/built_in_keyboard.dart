@@ -213,6 +213,26 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
                   widget.controller?.text += "ö";
                 }else if(letter == "u"){
                   widget.controller?.text += "ü";
+                }else if(letter == "A"){
+                  widget.controller?.text += "Ä";
+                }else if(letter == "E"){
+                  widget.controller?.text += "Ë";
+                }else if(letter == "I"){
+                  widget.controller?.text += "Ï";
+                }else if(letter == "O"){
+                  widget.controller?.text += "Ö";
+                }else if(letter == "U"){
+                  widget.controller?.text += "Ü";
+                }else if(letter == "Ä"){
+                  widget.controller?.text += "A";
+                }else if(letter == "Ë"){
+                  widget.controller?.text += "E";
+                }else if(letter == "Ï"){
+                  widget.controller?.text += "I";
+                }else if(letter == "Ö"){
+                  widget.controller?.text += "O";
+                }else if(letter == "Ü"){
+                  widget.controller?.text += "U";
                 }else{
                   widget.controller?.text += letter.toUpperCase();
                 }
