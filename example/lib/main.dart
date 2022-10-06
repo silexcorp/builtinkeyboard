@@ -85,14 +85,16 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: EdgeInsets.only(bottom: 3),
             child: BuiltInKeyboard(
-              language: Language.EN,
-              layout: Layout.QWERTY,
+              language: Language.KAQ,
+              layout: Layout.QWERTYKAQ,
               borderRadius: BorderRadius.circular(8),
               controller: textController,
               enableLongPressUppercase: true,
               enableSpaceBar: true,
               enableBackSpace: true,
               enableCapsLock: true,
+              onChangeKeyboard: (){},
+              onEnter: (){},
             ),
           ),
         ],

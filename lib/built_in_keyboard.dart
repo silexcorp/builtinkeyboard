@@ -2,13 +2,19 @@ library built_in_keyboard;
 
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'language.dart';
 
 class BuiltInKeyboard extends StatefulWidget {
+
+  //Change keyboard distribution
+  final VoidCallback onChangeKeyboard;
+
+  //Enter pressed
+  final VoidCallback onEnter;
+
   // Language of the keyboard
   final Language language;
 
@@ -51,7 +57,7 @@ class BuiltInKeyboard extends StatefulWidget {
   final Color? highlightColor;
   final Color? splashColor;
 
-  BuiltInKeyboard({
+  const BuiltInKeyboard({
     @required this.controller,
     this.language = Language.EN,
     this.layout = Layout.QWERTY,
@@ -59,7 +65,7 @@ class BuiltInKeyboard extends StatefulWidget {
     this.width,
     this.spacing = 8.0,
     this.borderRadius,
-    this.color = Colors.deepOrange,
+    this.color = Colors.black54,
     this.letterStyle = const TextStyle(fontSize: 25, color: Colors.black),
     this.enableSpaceBar = false,
     this.enableBackSpace = true,
@@ -68,6 +74,8 @@ class BuiltInKeyboard extends StatefulWidget {
     this.enableLongPressUppercase = false,
     this.highlightColor,
     this.splashColor,
+    required this.onChangeKeyboard,
+    required this.onEnter,
   });
   @override
   BuiltInKeyboardState createState() => BuiltInKeyboardState();
@@ -77,13 +85,14 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
   double? height;
   double? width;
   bool capsLockUppercase = false;
+  bool changeOtherLanguage = false;
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     height = screenHeight > 800 ? screenHeight * 0.059 : screenHeight * 0.07;
     width = screenWidth > 350 ? screenWidth * 0.084 : screenWidth * 0.082;
-    List<Widget> keyboardLayout = layout();
+    List<Widget> keyboardLayout = layout(capsLockUppercase, changeOtherLanguage);
     double hspacing;
     int topLen, midLen;
     try {
@@ -139,13 +148,33 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
                   ),
           ],
         ),
+        SizedBox(
+          height: widget.spacing,
+        ),
         widget.enableSpaceBar
-            ? Column(
+            ? Row(
                 children: [
                   SizedBox(
                     height: widget.spacing,
+                    width: 6,
                   ),
-                  spaceBar(),
+                  otherLetter(),
+                  SizedBox(
+                    width: widget.spacing,
+                  ),
+                  otherKeyboard(),
+                  SizedBox(
+                    width: widget.spacing,
+                  ),
+                  Expanded(child: spaceBar()),
+                  SizedBox(
+                    width: widget.spacing,
+                  ),
+                  enterButton(),
+                  SizedBox(
+                    height: widget.spacing,
+                    width: 6,
+                  ),
                 ],
               )
             : SizedBox(),
@@ -173,11 +202,21 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
                   TextPosition(offset: widget.controller!.text.length));
             },
             onLongPress: () {
-              if (widget.enableLongPressUppercase &&
-                  !widget.enableAllUppercase) {
-                widget.controller?.text += letter.toUpperCase();
-                widget.controller?.selection = TextSelection.fromPosition(
-                    TextPosition(offset: widget.controller!.text.length));
+              if (widget.enableLongPressUppercase && !widget.enableAllUppercase) {
+                if(letter == "a"){
+                  widget.controller?.text += "ä";
+                }else if(letter == "e"){
+                  widget.controller?.text += "ë";
+                }else if(letter == "i"){
+                  widget.controller?.text += "ï";
+                }else if(letter == "o"){
+                  widget.controller?.text += "ö";
+                }else if(letter == "u"){
+                  widget.controller?.text += "ü";
+                }else{
+                  widget.controller?.text += letter.toUpperCase();
+                }
+                widget.controller?.selection = TextSelection.fromPosition(TextPosition(offset: widget.controller!.text.length));
               }
             },
             child: Center(
@@ -198,7 +237,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
       borderRadius: widget.borderRadius ?? BorderRadius.circular(0),
       child: Container(
         height: widget.height ?? height,
-        width: (widget.width ?? width)! + 160,
+        width: (widget.width ?? width)! + 190,
         child: Material(
           type: MaterialType.button,
           color: widget.color,
@@ -213,10 +252,10 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
             },
             child: Center(
               child: Text(
-                '_________',
+                'Kaqchikel',
                 style: TextStyle(
                   fontSize: widget.letterStyle.fontSize,
-                  color: widget.letterStyle.color,
+                  color: widget.letterStyle.color!.withOpacity(0.6),
                 ),
               ),
             ),
@@ -268,6 +307,91 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
     );
   }
 
+  // Other letters
+  Widget enterButton() {
+    return ClipRRect(
+      borderRadius: widget.borderRadius ?? BorderRadius.circular(0),
+      child: Container(
+        height: widget.height ?? height,
+        width: (widget.width ?? width)! + 20,
+        child: Material(
+          type: MaterialType.button,
+          color: widget.color,
+          child: InkWell(
+            highlightColor: widget.highlightColor,
+            splashColor: widget.splashColor,
+            onTap: widget.onEnter,
+            child: Center(
+              child: Icon(
+                Icons.check_circle_sharp,
+                size: widget.letterStyle.fontSize,
+                color: widget.letterStyle.color,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget otherLetter() {
+    return ClipRRect(
+      borderRadius: widget.borderRadius ?? BorderRadius.circular(0),
+      child: Container(
+        height: widget.height ?? height,
+        width: (widget.width ?? width)! + 20,
+        child: Material(
+          type: MaterialType.button,
+          color: widget.color,
+          child: InkWell(
+            highlightColor: widget.highlightColor,
+            splashColor: widget.splashColor,
+            onTap: () {
+
+              HapticFeedback.heavyImpact();
+              setState(() {
+                changeOtherLanguage = !changeOtherLanguage;
+              });
+            },
+            child: Center(
+              child: Icon(
+                Icons.onetwothree_rounded,
+                size: widget.letterStyle.fontSize! + 16,
+                color: widget.letterStyle.color,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget otherKeyboard() {
+    return ClipRRect(
+      borderRadius: widget.borderRadius ?? BorderRadius.circular(0),
+      child: Container(
+        height: widget.height ?? height,
+        width: (widget.width ?? width)! + 10,
+        child: Material(
+          type: MaterialType.button,
+          color: widget.color,
+          child: InkWell(
+            highlightColor: widget.highlightColor,
+            splashColor: widget.splashColor,
+            onTap: widget.onChangeKeyboard,
+            child: Center(
+              child: Icon(
+                Icons.language,
+                size: widget.letterStyle.fontSize,
+                color: widget.letterStyle.color,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   // Capslock button widget
   Widget capsLock() {
     return ClipRRect(
@@ -289,7 +413,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
             },
             child: Center(
               child: Icon(
-                Icons.keyboard_capslock,
+                Icons.upload_rounded,
                 size: widget.letterStyle.fontSize,
                 color: widget.letterStyle.color,
               ),
@@ -301,11 +425,10 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
   }
 
   // Keyboard layout list
-  List<Widget> layout() {
+  List<Widget> layout(bool isUpper, bool isStrange) {
     List<String> letters = [];
     try {
-      letters =
-          languageConfig[widget.language]![widget.layout]!['layout']!.split(" ");
+      letters = languageConfig[widget.language]![widget.layout]!['layout']!.split(" ");
     } catch (_CastError) {
       printError(
           "Uknown language or layout was used, or Incorrect combination of language-layout");
@@ -314,9 +437,26 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
 
     List<Widget> keyboard = [];
     letters.forEach((String letter) {
-      keyboard.add(
-        buttonLetter(letter),
-      );
+      if(isStrange){
+        if(letter == "a"){
+          letter = "ä";
+        }else if(letter == "e"){
+          letter = "ë";
+        }else if(letter == "i"){
+          letter = "ï";
+        }else if(letter == "o"){
+          letter = "ö";
+        }else if(letter == "u"){
+          letter = "ü";
+        }
+        keyboard.add(
+          buttonLetter(isUpper ? letter.toUpperCase() : letter),
+        );
+      }else{
+        keyboard.add(
+          buttonLetter(isUpper ? letter.toUpperCase() : letter),
+        );
+      }
     });
     return keyboard;
   }

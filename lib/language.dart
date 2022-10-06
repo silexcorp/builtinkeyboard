@@ -80,6 +80,15 @@ var arabicConfig = {
 
 var kaqConfig = {
   Layout.QWERTYKAQ: <String, String>{
+    'layout': "q w e r t y u i o p ? a s tz ' j k l , x ch b' n m .",
+    'horizontalSpacing': '6.0',
+    'topLength': '10',
+    'middleLength': '9',
+  }
+};
+
+var kaqConfigDefault = {
+  Layout.QWERTYKAQ: <String, String>{
     'layout': "q w e r t y u i o p ? a s tz ' j k l , x ch b' n m",
     'horizontalSpacing': '6.0', // space between keys
     'topLength': '10', // number of keys
