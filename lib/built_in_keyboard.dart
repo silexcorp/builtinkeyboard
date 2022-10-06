@@ -2,6 +2,7 @@ library built_in_keyboard;
 
 import 'dart:io';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -35,6 +36,7 @@ class BuiltInKeyboard extends StatefulWidget {
 
   // TextStyle of the letters in the keys (fontsize, fontface)
   final TextStyle letterStyle;
+  final TextStyle letterStyleLanguage;
 
   // the additional key that can be added to the keyboard
   final bool enableSpaceBar;
@@ -67,6 +69,7 @@ class BuiltInKeyboard extends StatefulWidget {
     this.borderRadius,
     this.color = Colors.black54,
     this.letterStyle = const TextStyle(fontSize: 25, color: Colors.black),
+    this.letterStyleLanguage = const TextStyle(fontSize: 25, color: Colors.black45),
     this.enableSpaceBar = false,
     this.enableBackSpace = true,
     this.enableCapsLock = false,
@@ -240,9 +243,10 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
               }
             },
             child: Center(
-              child: Text(
+              child: AutoSizeText(
                 letter,
                 style: widget.letterStyle,
+                maxLines: 1,
               ),
             ),
           ),
@@ -271,9 +275,10 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
                   TextPosition(offset: widget.controller!.text.length));
             },
             child: Center(
-              child: Text(
+              child: AutoSizeText(
                 'Kaqchikel',
-                style: widget.letterStyle,
+                style: widget.letterStyleLanguage,
+                maxLines: 1,
               ),
             ),
           ),
