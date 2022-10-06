@@ -273,10 +273,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
             child: Center(
               child: Text(
                 'Kaqchikel',
-                style: TextStyle(
-                  fontSize: widget.letterStyle.fontSize,
-                  color: widget.letterStyle.color!.withOpacity(0.6),
-                ),
+                style: widget.letterStyle,
               ),
             ),
           ),
