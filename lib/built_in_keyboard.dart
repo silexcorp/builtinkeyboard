@@ -152,7 +152,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
           ],
         ),
         SizedBox(
-          height: widget.spacing,
+          height: widget.spacing + 2,
         ),
         widget.enableSpaceBar
             ? Row(
@@ -400,7 +400,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
           child: InkWell(
             highlightColor: widget.highlightColor,
             splashColor: widget.splashColor,
-            onTap: widget.onChangeKeyboard,
+            onLongPress: widget.onChangeKeyboard,
             child: Center(
               child: Icon(
                 Icons.language,
