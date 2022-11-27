@@ -205,7 +205,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
                   TextPosition(offset: widget.controller!.text.length));
             },
             onLongPress: () {
-              if (widget.enableLongPressUppercase && !widget.enableAllUppercase) {
+              if (widget.enableLongPressUppercase || !widget.enableAllUppercase) {
                 if(letter == "a"){
                   widget.controller?.text += "ä";
                 }else if(letter == "e"){
