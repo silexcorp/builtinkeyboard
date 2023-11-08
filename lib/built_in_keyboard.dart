@@ -507,20 +507,41 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
     List<Widget> keyboard = [];
     letters.forEach((String letter) {
       if(isStrange){
-        if(letter == "a"){
-          letter = "ä";
-        }else if(letter == "e"){
-          letter = "ë";
-        }else if(letter == "i"){
-          letter = "ï";
-        }else if(letter == "o"){
-          letter = "ö";
-        }else if(letter == "u"){
-          letter = "ü";
+        if(Language.KAQ == widget.language){
+          if(letter == "a"){
+            letter = "ä";
+          }else if(letter == "e"){
+            letter = "ë";
+          }else if(letter == "i"){
+            letter = "ï";
+          }else if(letter == "o"){
+            letter = "ö";
+          }else if(letter == "u"){
+            letter = "ü";
+          }
+          keyboard.add(
+            buttonLetter(isUpper ? letter.toUpperCase() : letter),
+          );
+        }if(Language.QEQ == widget.language){
+          if(letter == "a"){
+            letter = "aa";
+          }else if(letter == "e"){
+            letter = "ee";
+          }else if(letter == "i"){
+            letter = "ii";
+          }else if(letter == "o"){
+            letter = "oo";
+          }else if(letter == "u"){
+            letter = "uu";
+          }
+          keyboard.add(
+            buttonLetter(isUpper ? letter.toUpperCase() : letter),
+          );
+        }else{
+          keyboard.add(
+            buttonLetter(isUpper ? letter.toUpperCase() : letter),
+          );
         }
-        keyboard.add(
-          buttonLetter(isUpper ? letter.toUpperCase() : letter),
-        );
       }else{
         keyboard.add(
           buttonLetter(isUpper ? letter.toUpperCase() : letter),
