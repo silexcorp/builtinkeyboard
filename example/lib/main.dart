@@ -31,13 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   @override
@@ -85,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: EdgeInsets.only(bottom: 3),
             child: BuiltInKeyboard(
-              language: Language.KAQ,
+              language: Language.QEQ,
               layout: Layout.QWERTYKAQ,
               borderRadius: BorderRadius.circular(8),
               controller: textController,

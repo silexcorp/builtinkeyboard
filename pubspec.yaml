@@ -1,10 +1,10 @@
 name: built_in_keyboard
 description: A Simple package for dispaying a built in keyboard that adapts with most screensizes.
-version: 0.3.0
+version: 0.4.0
 homepage: https://github.com/Open-pi/builtinkeyboard
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:

@@ -69,7 +69,7 @@ class BuiltInKeyboard extends StatefulWidget {
     this.borderRadius,
     this.color = Colors.black54,
     this.letterStyle = const TextStyle(fontSize: 25, color: Colors.black),
-    this.letterStyleLanguage = const TextStyle(fontSize: 25, color: Colors.black45),
+    this.letterStyleLanguage = const TextStyle(fontSize: 25, color: Colors.black54),
     this.enableSpaceBar = false,
     this.enableBackSpace = true,
     this.enableCapsLock = false,
@@ -206,39 +206,78 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
             },
             onLongPress: () {
               if (widget.enableLongPressUppercase || !widget.enableAllUppercase) {
-                if(letter == "a"){
-                  widget.controller?.text += "ä";
-                }else if(letter == "e"){
-                  widget.controller?.text += "ë";
-                }else if(letter == "i"){
-                  widget.controller?.text += "ï";
-                }else if(letter == "o"){
-                  widget.controller?.text += "ö";
-                }else if(letter == "u"){
-                  widget.controller?.text += "ü";
-                }else if(letter == "A"){
-                  widget.controller?.text += "Ä";
-                }else if(letter == "E"){
-                  widget.controller?.text += "Ë";
-                }else if(letter == "I"){
-                  widget.controller?.text += "Ï";
-                }else if(letter == "O"){
-                  widget.controller?.text += "Ö";
-                }else if(letter == "U"){
-                  widget.controller?.text += "Ü";
-                }else if(letter == "Ä"){
-                  widget.controller?.text += "A";
-                }else if(letter == "Ë"){
-                  widget.controller?.text += "E";
-                }else if(letter == "Ï"){
-                  widget.controller?.text += "I";
-                }else if(letter == "Ö"){
-                  widget.controller?.text += "O";
-                }else if(letter == "Ü"){
-                  widget.controller?.text += "U";
+                if(Language.KAQ == widget.language){
+                  if(letter == "a"){
+                    widget.controller?.text += "ä";
+                  }else if(letter == "e"){
+                    widget.controller?.text += "ë";
+                  }else if(letter == "i"){
+                    widget.controller?.text += "ï";
+                  }else if(letter == "o"){
+                    widget.controller?.text += "ö";
+                  }else if(letter == "u"){
+                    widget.controller?.text += "ü";
+                  }else if(letter == "A"){
+                    widget.controller?.text += "Ä";
+                  }else if(letter == "E"){
+                    widget.controller?.text += "Ë";
+                  }else if(letter == "I"){
+                    widget.controller?.text += "Ï";
+                  }else if(letter == "O"){
+                    widget.controller?.text += "Ö";
+                  }else if(letter == "U"){
+                    widget.controller?.text += "Ü";
+                  }else if(letter == "Ä"){
+                    widget.controller?.text += "A";
+                  }else if(letter == "Ë"){
+                    widget.controller?.text += "E";
+                  }else if(letter == "Ï"){
+                    widget.controller?.text += "I";
+                  }else if(letter == "Ö"){
+                    widget.controller?.text += "O";
+                  }else if(letter == "Ü"){
+                    widget.controller?.text += "U";
+                  }else{
+                    widget.controller?.text += letter.toUpperCase();
+                  }
+                }if(Language.QEQ == widget.language){
+                  if(letter == "a"){
+                    widget.controller?.text += "aa";
+                  }else if(letter == "e"){
+                    widget.controller?.text += "ee";
+                  }else if(letter == "i"){
+                    widget.controller?.text += "ii";
+                  }else if(letter == "o"){
+                    widget.controller?.text += "oo";
+                  }else if(letter == "u"){
+                    widget.controller?.text += "uu";
+                  }else if(letter == "A"){
+                    widget.controller?.text += "AA";
+                  }else if(letter == "E"){
+                    widget.controller?.text += "EE";
+                  }else if(letter == "I"){
+                    widget.controller?.text += "II";
+                  }else if(letter == "O"){
+                    widget.controller?.text += "OO";
+                  }else if(letter == "U"){
+                    widget.controller?.text += "UU";
+                  }else if(letter == "AA"){
+                    widget.controller?.text += "a";
+                  }else if(letter == "EE"){
+                    widget.controller?.text += "e";
+                  }else if(letter == "II"){
+                    widget.controller?.text += "i";
+                  }else if(letter == "OO"){
+                    widget.controller?.text += "o";
+                  }else if(letter == "UU"){
+                    widget.controller?.text += "u";
+                  }else{
+                    widget.controller?.text += letter.toUpperCase();
+                  }
                 }else{
                   widget.controller?.text += letter.toUpperCase();
                 }
+
                 widget.controller?.selection = TextSelection.fromPosition(TextPosition(offset: widget.controller!.text.length));
               }
             },
@@ -257,6 +296,14 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
 
   // Spacebar button widget
   Widget spaceBar() {
+    String keyboradName = "Español";
+    if(widget.language == Language.KAQ) keyboradName = "Kaqchikel";
+    if(widget.language == Language.QAN) keyboradName = "Q'anjob'al";
+    if(widget.language == Language.KCH) keyboradName = "K'iche'";
+    if(widget.language == Language.QEQ) keyboradName = "Q'eqchi'";
+    if(widget.language == Language.MAM) keyboradName = "Mam";
+    if(widget.language == Language.POP) keyboradName = "Popti'";
+    if(widget.language == Language.POQ) keyboradName = "Poqomam";
     return ClipRRect(
       borderRadius: widget.borderRadius ?? BorderRadius.circular(0),
       child: Container(
@@ -276,10 +323,10 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
             },
             child: Center(
               child: AutoSizeText(
-                'Kaqchikel',
+                keyboradName,
                 style: widget.letterStyleLanguage,
                 maxLines: 1,
-              ),
+              )
             ),
           ),
         ),

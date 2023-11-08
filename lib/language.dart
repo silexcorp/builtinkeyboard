@@ -4,6 +4,12 @@ enum Language {
   DE,
   AR,
   KAQ,
+  QAN,
+  KCH,
+  QEQ,
+  MAM,
+  POP,
+  POQ,
 }
 
 enum Layout {
@@ -19,7 +25,13 @@ var languageConfig = {
   Language.FR: frenchConfig,
   Language.DE: germanConfig,
   Language.AR: arabicConfig,
-  Language.KAQ: kaqConfig,
+  Language.KAQ: kaqchikelConfig,
+  Language.QAN: qanjobalConfig,
+  Language.KCH: kicheConfig,
+  Language.QEQ: qeqchiConfig,
+  Language.MAM: mamConfig,
+  Language.POP: poptiConfig,
+  Language.POQ: poqConfig,
 };
 
 // Languages Configurations
@@ -78,9 +90,57 @@ var arabicConfig = {
   },
 };
 
-var kaqConfig = {
+var kaqchikelConfig = {
   Layout.QWERTYKAQ: <String, String>{
     'layout': "q w e r t y u i o p ? a s tz ' j k l , x ch b' n m .",
+    'horizontalSpacing': '6.0',
+    'topLength': '10',
+    'middleLength': '8',
+  }
+};
+var qanjobalConfig = {
+  Layout.QWERTYKAQ: <String, String>{
+    'layout': "q w e r t y u i o p a s tz tx xh h j k l , x ch ' b' n m",
+    'horizontalSpacing': '6.0',
+    'topLength': '10',
+    'middleLength': '9',
+  }
+};
+var kicheConfig = {
+  Layout.QWERTYKAQ: <String, String>{
+    'layout': "q w e r t y u i o p ? a s tz ' j k l , x ch b' n m",
+    'horizontalSpacing': '6.0',
+    'topLength': '10',
+    'middleLength': '8',
+  }
+};
+var qeqchiConfig = {
+  Layout.QWERTYKAQ: <String, String>{
+    'layout': "q w e r t y u i o p a s tz ' h j k l , x ch b' n m",
+    'horizontalSpacing': '6.0',
+    'topLength': '10',
+    'middleLength': '8',
+  }
+};
+var mamConfig = {
+  Layout.QWERTYKAQ: <String, String>{
+    'layout': "q w e r t y u i o p a s tz tx xh ẍ j k ky l , x ch ' b' n m",
+    'horizontalSpacing': '6.0',
+    'topLength': '10',
+    'middleLength': '9',
+  }
+};
+var poptiConfig = {
+  Layout.QWERTYKAQ: <String, String>{
+    'layout': "q' w e r t y u i o p a s tz tx xh h j k l x ch ' b' n nh m",
+    'horizontalSpacing': '6.0',
+    'topLength': '10',
+    'middleLength': '9',
+  }
+};
+var poqConfig = {
+  Layout.QWERTYKAQ: <String, String>{
+    'layout': "q w e r t y u i o p a s tz ' h j k l , x ch b' n m",
     'horizontalSpacing': '6.0',
     'topLength': '10',
     'middleLength': '9',
