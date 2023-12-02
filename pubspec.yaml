@@ -1,6 +1,6 @@
 name: built_in_keyboard
 description: A Simple package for dispaying a built in keyboard that adapts with most screensizes.
-version: 0.4.0
+version: 0.5.0
 homepage: https://github.com/Open-pi/builtinkeyboard
 
 environment:

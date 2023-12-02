@@ -93,7 +93,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    height = screenHeight > 800 ? screenHeight * 0.059 : screenHeight * 0.07;
+    height = screenHeight > 800 ? screenHeight * 0.062 : screenHeight * 0.074;
     width = screenWidth > 350 ? screenWidth * 0.084 : screenWidth * 0.082;
     List<Widget> keyboardLayout = layout(capsLockUppercase, changeOtherLanguage);
     double hspacing;
