@@ -240,7 +240,8 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
                   }else{
                     widget.controller?.text += letter.toUpperCase();
                   }
-                }if(Language.QEQ == widget.language){
+                }
+                else if(Language.QEQ == widget.language){
                   if(letter == "a"){
                     widget.controller?.text += "aa";
                   }else if(letter == "e"){
@@ -274,6 +275,49 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
                   }else{
                     widget.controller?.text += letter.toUpperCase();
                   }
+                }
+                else if(Language.TZU == widget.language){
+                  if(letter == "a"){
+                    widget.controller?.text += "aa";
+                  }else if(letter == "e"){
+                    widget.controller?.text += "ee";
+                  }else if(letter == "i"){
+                    widget.controller?.text += "ii";
+                  }else if(letter == "o"){
+                    widget.controller?.text += "oo";
+                  }else if(letter == "u"){
+                    widget.controller?.text += "uu";
+                  }else if(letter == "A"){
+                    widget.controller?.text += "AA";
+                  }else if(letter == "E"){
+                    widget.controller?.text += "EE";
+                  }else if(letter == "I"){
+                    widget.controller?.text += "II";
+                  }else if(letter == "O"){
+                    widget.controller?.text += "OO";
+                  }else if(letter == "U"){
+                    widget.controller?.text += "UU";
+                  }else if(letter == "AA"){
+                    widget.controller?.text += "a";
+                  }else if(letter == "EE"){
+                    widget.controller?.text += "e";
+                  }else if(letter == "II"){
+                    widget.controller?.text += "i";
+                  }else if(letter == "OO"){
+                    widget.controller?.text += "o";
+                  }else if(letter == "UU"){
+                    widget.controller?.text += "u";
+                  }else if(letter == "tz"){
+                    widget.controller?.text += "tz'";
+                  }else if(letter == "TZ"){
+                    widget.controller?.text += "TZ'";
+                  }else if(letter == "ch"){
+                    widget.controller?.text += "ch'";
+                  }else if(letter == "CH"){
+                    widget.controller?.text += "CH'";
+                  }else{
+                    widget.controller?.text += letter.toUpperCase();
+                  }
                 }else{
                   widget.controller?.text += letter.toUpperCase();
                 }
@@ -304,6 +348,8 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
     if(widget.language == Language.MAM) keyboradName = "Mam";
     if(widget.language == Language.POP) keyboradName = "Popti'";
     if(widget.language == Language.POQ) keyboradName = "Poqomam";
+    if(widget.language == Language.TZU) keyboradName = "Tz'utujil";
+
     return ClipRRect(
       borderRadius: widget.borderRadius ?? BorderRadius.circular(0),
       child: Container(
@@ -522,7 +568,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
           keyboard.add(
             buttonLetter(isUpper ? letter.toUpperCase() : letter),
           );
-        }if(Language.QEQ == widget.language){
+        }else if(Language.QEQ == widget.language){
           if(letter == "a"){
             letter = "aa";
           }else if(letter == "e"){
@@ -533,6 +579,25 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
             letter = "oo";
           }else if(letter == "u"){
             letter = "uu";
+          }
+          keyboard.add(
+            buttonLetter(isUpper ? letter.toUpperCase() : letter),
+          );
+        }else if(Language.TZU == widget.language){
+          if(letter == "a"){
+            letter = "aa";
+          }else if(letter == "e"){
+            letter = "ee";
+          }else if(letter == "i"){
+            letter = "ii";
+          }else if(letter == "o"){
+            letter = "oo";
+          }else if(letter == "u"){
+            letter = "uu";
+          }else if(letter == "tz"){
+            letter = "tz'";
+          }else if(letter == "ch"){
+            letter = "ch'";
           }
           keyboard.add(
             buttonLetter(isUpper ? letter.toUpperCase() : letter),

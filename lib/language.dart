@@ -10,6 +10,7 @@ enum Language {
   MAM,
   POP,
   POQ,
+  TZU,
 }
 
 enum Layout {
@@ -32,6 +33,7 @@ var languageConfig = {
   Language.MAM: mamConfig,
   Language.POP: poptiConfig,
   Language.POQ: poqConfig,
+  Language.TZU: tzutujilConfig,
 };
 
 // Languages Configurations
@@ -127,7 +129,7 @@ var mamConfig = {
     'layout': "q w e r t y u i o p a s tz tx xh ẍ j k ky l , x ch ' b' n m",
     'horizontalSpacing': '6.0',
     'topLength': '10',
-    'middleLength': '9',
+    'middleLength': '10',
   }
 };
 var poptiConfig = {
@@ -146,12 +148,11 @@ var poqConfig = {
     'middleLength': '9',
   }
 };
-
-var kaqConfigDefault = {
+var tzutujilConfig = {
   Layout.QWERTYKAQ: <String, String>{
-    'layout': "q w e r t y u i o p ? a s tz ' j k l , x ch b' n m",
-    'horizontalSpacing': '6.0', // space between keys
-    'topLength': '10', // number of keys
-    'middleLength': '9', // number of keys
+    'layout': "q w e r t y u i o p ? a s tz ' j k l , x ch b' n m .",
+    'horizontalSpacing': '6.0',
+    'topLength': '10',
+    'middleLength': '8',
   }
 };
