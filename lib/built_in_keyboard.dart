@@ -276,7 +276,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
                     widget.controller?.text += letter.toUpperCase();
                   }
                 }
-                else if(Language.TZU == widget.language){
+                else if(Language.TZU == widget.language || Language.ACH == widget.language){
                   if(letter == "a"){
                     widget.controller?.text += "aa";
                   }else if(letter == "e"){
@@ -349,6 +349,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
     if(widget.language == Language.POP) keyboradName = "Popti'";
     if(widget.language == Language.POQ) keyboradName = "Poqomam";
     if(widget.language == Language.TZU) keyboradName = "Tz'utujil";
+    if(widget.language == Language.ACH) keyboradName = "Achi";
 
     return ClipRRect(
       borderRadius: widget.borderRadius ?? BorderRadius.circular(0),
@@ -583,7 +584,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
           keyboard.add(
             buttonLetter(isUpper ? letter.toUpperCase() : letter),
           );
-        }else if(Language.TZU == widget.language){
+        }else if(Language.TZU == widget.language || Language.ACH == widget.language){
           if(letter == "a"){
             letter = "aa";
           }else if(letter == "e"){
@@ -598,6 +599,8 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
             letter = "tz'";
           }else if(letter == "ch"){
             letter = "ch'";
+          }else if(letter == "k"){
+            letter = "k'";
           }
           keyboard.add(
             buttonLetter(isUpper ? letter.toUpperCase() : letter),
