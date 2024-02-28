@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Padding(
             padding: EdgeInsets.only(bottom: 3),
             child: BuiltInKeyboard(
-              language: Language.QEQ,
+              language: Language.MAM,
               layout: Layout.QWERTYKAQ,
               borderRadius: BorderRadius.circular(8),
               controller: textController,

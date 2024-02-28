@@ -128,10 +128,10 @@ var qeqchiConfig = {
 };
 var mamConfig = {
   Layout.QWERTYKAQ: <String, String>{
-    'layout': "q w e r t y u i o p a s tz tx xh ẍ j k ky l , x ch ' b' n m",
+    'layout': "q w e r t y u i o p a s tz tx ẍ j k ky l , x ch ' b' n m",
     'horizontalSpacing': '6.0',
     'topLength': '10',
-    'middleLength': '10',
+    'middleLength': '9',
   }
 };
 var poptiConfig = {
