@@ -12,6 +12,7 @@ enum Language {
   POQ,
   TZU,
   ACH,
+  IXI,
 }
 
 enum Layout {
@@ -36,6 +37,7 @@ var languageConfig = {
   Language.POQ: poqConfig,
   Language.TZU: tzutujilConfig,
   Language.ACH: achiConfig,
+  Language.IXI: ixilConfig,
 };
 
 // Languages Configurations
@@ -164,5 +166,13 @@ var achiConfig = {
     'horizontalSpacing': '6.0',
     'topLength': '10',
     'middleLength': '8',
+  }
+};
+var ixilConfig = {
+  Layout.QWERTYKAQ: <String, String>{
+    'layout': "q w e r t y u i o p a s v tz tx ' j k l h x ch b' n m ,",
+    'horizontalSpacing': '6.0',
+    'topLength': '10',
+    'middleLength': '9',
   }
 };

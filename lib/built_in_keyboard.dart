@@ -350,6 +350,7 @@ class BuiltInKeyboardState extends State<BuiltInKeyboard> {
     if(widget.language == Language.POQ) keyboradName = "Poqomam";
     if(widget.language == Language.TZU) keyboradName = "Tz'utujil";
     if(widget.language == Language.ACH) keyboradName = "Achi";
+    if(widget.language == Language.IXI) keyboradName = "Ixil";
 
     return ClipRRect(
       borderRadius: widget.borderRadius ?? BorderRadius.circular(0),
